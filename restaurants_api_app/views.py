@@ -6,8 +6,13 @@ from .serializers import RestaurantSerializer
 from django.shortcuts import render, get_object_or_404
 from django.db.models import QuerySet
 from .models import Restaurants, Offer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 # Create your views here.
+
+
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_api(request: Request) -> Response:
     try:
         name: str = request.data.get("name")
@@ -67,6 +72,7 @@ def display_api(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
 def update_patch_api(request, pk):
     try:
         restaurant = Restaurants.objects.get(pk=pk)
@@ -89,6 +95,7 @@ def update_patch_api(request, pk):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
+@permission_classes([IsAuthenticated])
 def update_put_api(request):
     pk = request.data.get("id")
     if not pk:
@@ -108,6 +115,7 @@ def update_put_api(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def delete_api(request):
     pk = request.data.get("id")
 
@@ -146,6 +154,7 @@ def search_restaurents(request: Request) -> Response:
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def create_or_update_offer(request, restaurant_id):
     restaurant = get_object_or_404(Restaurants, pk=restaurant_id)
 
@@ -170,6 +179,7 @@ def create_or_update_offer(request, restaurant_id):
     )
     
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def disable_offer(request, restaurant_id):
     restaurant = get_object_or_404(Restaurants, pk=restaurant_id)
 

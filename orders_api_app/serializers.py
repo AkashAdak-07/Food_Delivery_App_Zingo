@@ -9,10 +9,24 @@ class OrderItemSerializer(serializers.ModelSerializer):
         model = OrderItem
         fields = "__all__"
 
-
 class OrderSerializer(serializers.ModelSerializer):
     order_items = OrderItemSerializer(many=True, read_only=True)
 
     class Meta:
         model = Order
         fields = "__all__"
+
+class OrderHistorySerializer(serializers.ModelSerializer):
+    order_items = OrderItemSerializer(many=True, read_only=True)
+    restaurant_name = serializers.CharField(source="restaurant.name", read_only=True)
+
+    class Meta:
+        model = Order
+        fields = [
+            "id",
+            "restaurant_name",
+            "order_items",
+            "totalAmount",
+            "status",
+            "createdAt"
+        ]

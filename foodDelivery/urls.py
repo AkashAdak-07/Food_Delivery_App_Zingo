@@ -13,7 +13,10 @@ urlpatterns = [
     path('menuItems-api/',include('menuItems_api_app.urls')),
     path('cart-api/',include('cart_api_app.urls')),
     path('users-temp/',include('users_temp_app.urls')),
-    path('orders-api/',include('orders_api_app.urls'))
+    path('orders-api/',include('orders_api_app.urls')),
+    path("users-api/", include("users_api_app.urls")),
+    path('contact-api/',include('contact.urls'))
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
