@@ -1,0 +1,36 @@
+/* Navbar shadow & height */
+.navbar {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 0.6rem 1.2rem;
+}
+
+/* Brand text style */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+}
+
+/* Search box polish */
+.navbar .form-control {
+    border-radius: 20px;
+    padding-left: 15px;
+}
+
+/* Sidebar hover effect */
+.nav-sidebar .nav-link:hover {
+    background-color: rgba(220, 53, 69, 0.15);
+    border-radius: 6px;
+}
+
+/* Active menu highlight */
+.nav-sidebar .nav-link.active {
+    background-color: #dc3545;
+    color: #fff !important;
+    border-radius: 6px;
+}
+
+/* Table row hover */
+.table-hover tbody tr:hover {
+    background-color: rgba(220, 53, 69, 0.05);
+}

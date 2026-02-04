@@ -166,7 +166,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
@@ -188,39 +188,52 @@ EMAIL_HOST_PASSWORD = 'hfhg jsgm tejv jgme'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Zingo||Admin ",
+    "site_title": "Zingo | Admin",
     "site_header": "Zingo Admin",
-    "site_brand": "Zingo/Admin",              # ⭐ THIS is the key one
-    "site_logo": None,                  # No logo image
-    "site_logo_classes": "img-circle",
-    "welcome_sign": "Welcome to Admin Dashboard",
+    "site_brand": "Zingo",
+    "site_logo": None,
+    "site_logo_classes": "img-circle elevation-2",
+    "welcome_sign": "Welcome to Zingo Admin Dashboard",
 
-    "search_model": "auth.User",
+    "search_model": ["auth.User", "restaurants_api_app.Restaurants"],
     "changeform_format": "tabs",
-    "show_ui_builder": True,
+    "show_ui_builder": False,
+    "custom_css": "css/admin_custom.css",
 }
+
 JAZZMIN_UI_TWEAKS = {
+    
     "navbar_small_text": False,
     "footer_small_text": True,
     "body_small_text": False,
     "brand_small_text": False,
-    "brand_colour": "navbar-white",
+
+    
+    "brand_colour": "navbar-danger",
     "accent": "accent-danger",
     "navbar": "navbar-danger navbar-dark",
-    "no_navbar_border": True,
+
+    
     "navbar_fixed": True,
-    "layout_boxed": False,
-    "footer_fixed": False,
+    "no_navbar_border": True,
+
+    
     "sidebar_fixed": True,
     "sidebar": "sidebar-light-danger",
-    "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": True,
-    "sidebar_nav_compact_style": False,
-    "sidebar_nav_legacy_style": False,
-    "sidebar_nav_flat_style": False,
+    "sidebar_nav_compact_style": True,   
+    "sidebar_nav_flat_style": True,      
+
+    
+    "layout_boxed": False,
+    "footer_fixed": False,
+
+    
     "theme": "flatly",
     "dark_mode_theme": None,
+
+    
     "button_classes": {
         "primary": "btn-danger",
         "secondary": "btn-outline-secondary",
@@ -230,4 +243,5 @@ JAZZMIN_UI_TWEAKS = {
         "success": "btn-success"
     }
 }
+
 
